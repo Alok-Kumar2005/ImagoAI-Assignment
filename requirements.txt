@@ -15,5 +15,6 @@ mlflow
 dagshub
 ipykernel
 seaborn
+dvc
 
 -e.
