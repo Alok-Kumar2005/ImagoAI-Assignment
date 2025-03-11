@@ -56,6 +56,17 @@ Due to the limited dataset size (approximately 500 rows), machine learning algor
    - The model was further refined by tuning hyperparameters.
    - The best parameters were logged using MLflow for reproducibility and future reference.
 
+## DVC Pipeline
+
+- Created a robust pipeline for the model.
+- If, after some time, we find that the model is not performing well on the given parameters:
+  - We don't need to change the entire code.
+  - Simply perform experimentation to obtain the best parameters.
+- Update the `params.yaml` file.
+- Run `dvc repro` in the terminal.
+<img src="images\image4.png" alt="Training Pipeline" width="500" height="300">
+
+
 ## Key Findings and Suggestions for Improvement
 
 - **Data Preprocessing:**  
