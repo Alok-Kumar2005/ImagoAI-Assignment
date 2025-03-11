@@ -41,7 +41,7 @@ Given that the dataset contains more than 400 columns, dimensionality reduction 
 
 Due to the limited dataset size (approximately 500 rows), machine learning algorithms were chosen over neural networks, which might underfit on small datasets.
 
-<img src="images\image1.png" alt="best performing models" width="500" height="300">
+<img src="images\image2.png" alt="best performing models" width="500" height="300">
 
 1. **Experiment Tracking:**  
    - MLflow and DagsHub were used to log experiments, track model performance, and record hyperparameter tuning.
