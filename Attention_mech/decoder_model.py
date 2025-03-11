@@ -70,7 +70,6 @@ def compute_metrics(y_true, y_pred):
 
 
 def main():
-    # Load the dataset.
     df = pd.read_csv("data/TASK-ML-INTERN.csv")
     
     df = df.drop(df.columns[0], axis=1)
@@ -128,6 +127,9 @@ def main():
     print("Evaluation Metrics:")
     for metric, value in metrics.items():
         print(f"{metric}: {value:.4f}")
+
+
+
 
 if __name__ == "__main__":
     main()
