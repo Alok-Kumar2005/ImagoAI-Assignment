@@ -40,13 +40,16 @@ def load_data(data_path: str) -> pd.DataFrame:
 
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Preprocess the data by removing the first column.
+    Preprocess the data by keeping only the first 21 columns and the last column (target),
+    dropping all columns from index 21 to the second-to-last column.
+    
     :param df: DataFrame containing the data.
     :return: DataFrame containing the preprocessed data.
     """
     try:
-        # Remove the first column (assumed to be an index or ID column)
-        final_df = df.iloc[:, 1:]
+        # Create a list of column indices to keep: first 21 columns (0 to 20) + last column
+        keep_indices = list(range(21)) + [-1]
+        final_df = df.iloc[:, keep_indices]
         return final_df
     except Exception as e:
         logger.error(f"Error in preprocessing data: {e}")
