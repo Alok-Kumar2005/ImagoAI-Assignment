@@ -26,6 +26,8 @@ def data_preprocessing(train_data, test_data):
 
 train_preprocessed_data, test_preprocessed_data = data_preprocessing(train_data, test_data)
 
+
+
 data_path = os.path.join("data", "processed")
 os.makedirs(data_path, exist_ok=True)
 

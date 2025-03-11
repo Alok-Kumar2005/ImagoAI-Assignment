@@ -7,9 +7,10 @@ import json
 from sklearn.metrics import mean_squared_error , mean_absolute_error , r2_score
 
 clf = pickle.load(open('model.pkl', 'rb'))
-test_data = pd.read_csv("data/features/test.csv")
-X_test = test_data.iloc[:, :-1]
-y_test = test_data.iloc[:, -1]
+X_test = pd.read_csv("data/features/test.csv")
+y_test = pd.read_csv("data/processed/test.csv").iloc[:, -1]
+# X_test = test_data.iloc[:, :-1]
+# y_test = test_data.iloc[:, -1]
 
 y_pred = clf.predict(X_test)
 mean_squared_error_value = mean_squared_error(y_test, y_pred)

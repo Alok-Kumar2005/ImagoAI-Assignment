@@ -48,6 +48,7 @@ def load_data(data_path: str) -> pd.DataFrame:
     try:
         logger.info(f"Loading data from {data_path}")
         data = pd.read_csv(data_path)
+        data = data.iloc[:, 1:]
         logger.info("Data loaded successfully")
         return data
     except FileNotFoundError as e:
@@ -64,8 +65,8 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     :return: DataFrame containing the preprocessed data.
     """
     try:
-        # Create a list of column indices to keep: first 21 columns (0 to 20) + last column
-        keep_indices = list(range(21)) + [-1]
+        # Create a list of column indices to keep: first 20 columns (0 to 19) + last column
+        keep_indices = list(range(20)) + [-1]
         final_df = df.iloc[:, keep_indices]
         return final_df
     except Exception as e:

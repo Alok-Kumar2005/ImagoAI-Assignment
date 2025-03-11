@@ -16,5 +16,7 @@ dagshub
 ipykernel
 seaborn
 dvc
-
+fastapi
+uvicorn
+streamlit
 -e.

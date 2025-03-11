@@ -41,9 +41,12 @@ def load_params(params_path: str) -> dict:
 
 
 
-train_data = pd.read_csv("data/features/train.csv")
-X_train = train_data.iloc[:, :-1]
-y_train = train_data.iloc[:, -1]
+X_train = pd.read_csv("data/features/train.csv")
+print(X_train.shape)
+
+y_train = pd.read_csv("data/processed/train.csv").iloc[:, -1]
+# X_train = train_data.iloc[:, :-1]
+# y_train = train_data.iloc[:,]
 
 ## on the basis of the experiment 3, we have these parameters as the best parameters
 # params = {'learning_rate': 0.01, 

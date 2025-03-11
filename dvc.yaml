@@ -22,6 +22,7 @@ stages:
       - data/processed
     outs:
       - data/features
+      - scaler.pkl
 
   model_building:
     cmd: python src/ml_project/components/model_building.py
