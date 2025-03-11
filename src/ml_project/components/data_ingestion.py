@@ -78,7 +78,7 @@ def main():
         df = load_data("data/TASK-ML-INTERN.csv")
         final_df = preprocess_data(df)
         train_data, test_data = train_test_split(final_df, test_size=0.2, random_state=42)
-        save_data(train_data, test_data, "data")
+        save_data(train_data, test_data, "data/raw")
     except Exception as e:
         logger.error(f"Error in main: {e}")
         raise e
