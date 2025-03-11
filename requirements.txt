@@ -19,4 +19,7 @@ dvc
 fastapi
 uvicorn
 streamlit
+torch
+transformers
+
 -e.
