@@ -26,12 +26,17 @@ df = pd.read_csv("data/TASK-ML-INTERN.csv")
 X = df.iloc[:, 1:21]  # Using columns 1 to 20 as features
 y = df.iloc[:, -1]    # Using the last column as the target
 
+
+## apply train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+## apply StandardScaler
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
+
+## logging these model in mlflow
 models = {
     "LinearRegression": LinearRegression(),
     "RandomForestRegressor": RandomForestRegressor(n_estimators=100, random_state=42),

@@ -6,6 +6,8 @@ from sklearn.preprocessing import StandardScaler
 train_data = pd.read_csv("data/raw/train.csv")
 test_data = pd.read_csv("data/raw/test.csv")
 
+
+## to handle the outliers
 def outliers_handling(df):
     for col in df.columns:
         if df[col].dtype != 'object':
@@ -18,7 +20,7 @@ def outliers_handling(df):
     return df
 
 
-
+## applying the outliers handling
 def data_preprocessing(train_data, test_data):
     train_data = outliers_handling(train_data)
     test_data = outliers_handling(test_data)
@@ -27,7 +29,7 @@ def data_preprocessing(train_data, test_data):
 train_preprocessed_data, test_preprocessed_data = data_preprocessing(train_data, test_data)
 
 
-
+## saved to the data/processed directory
 data_path = os.path.join("data", "processed")
 os.makedirs(data_path, exist_ok=True)
 

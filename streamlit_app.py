@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 
+## setting the title of the web app
 st.title("Machine Learning Prediction App")
 st.write("Enter 20 feature values (each between 0 and 1):")
 

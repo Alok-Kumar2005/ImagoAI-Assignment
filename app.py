@@ -5,6 +5,8 @@ import numpy as np
 
 app = FastAPI()
 
+
+## creating class for the request body
 class PredictionRequest(BaseModel):
     features: conlist(float, min_length=20, max_length=20)
 
@@ -15,12 +17,16 @@ class PredictionRequest(BaseModel):
             raise ValueError("Each feature must be between 0 and 1")
         return v
 
+# loading the scaler model
 with open("scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
+# loading the model
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
+
+## prediction endpoint
 @app.post("/predict")
 def predict(request: PredictionRequest):
     try:

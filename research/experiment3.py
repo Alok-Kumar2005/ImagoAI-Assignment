@@ -17,6 +17,8 @@ X_test = X_feature_test.iloc[:, :-1]
 y_test = X_feature_test.iloc[:, -1]
 
 model = GradientBoostingRegressor()
+
+## deine the parameters for the model
 param_grid = {
     "n_estimators": [50, 100, 150],
     "max_depth": [3, 5, 7],
@@ -26,10 +28,13 @@ param_grid = {
 }
 grid_search = GridSearchCV(model, param_grid, cv=5, n_jobs=-1, verbose=2)
 
+## initialize the dagshub and mlflow and set the experiment
 dagshub.init(repo_owner='ay747283', repo_name='ImagoAI-Assignment', mlflow=True)
 mlflow.set_tracking_uri('https://dagshub.com/ay747283/ImagoAI-Assignment.mlflow')
 mlflow.set_experiment('GBR Hyperparameter Tuning')
 
+
+## start the mlflow run
 with mlflow.start_run() as parent_run:
     grid_search.fit(X_train, y_train)
 
@@ -40,7 +45,7 @@ with mlflow.start_run() as parent_run:
 
     best_params = grid_search.best_params_
     best_score = grid_search.best_score_
-
+    ## logged the best parameters and best score
     mlflow.log_params(best_params)
     mlflow.log_metric("best_mean_test_score", best_score)
 

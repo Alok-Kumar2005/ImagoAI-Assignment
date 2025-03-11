@@ -23,6 +23,7 @@ logger.addHandler(console_handler)
 logger.addHandler(file_handler)
 
 
+## loading the params
 def load_params(params_path: str) -> dict:
     """"Load parameters from the given path."""
     try:
@@ -38,7 +39,7 @@ def load_params(params_path: str) -> dict:
         raise e
 
 
-
+## loading the data
 def load_data(data_path: str) -> pd.DataFrame:
     """
     Load data from the given path.
@@ -56,6 +57,7 @@ def load_data(data_path: str) -> pd.DataFrame:
         raise FileNotFoundError(f"File not found at {data_path}") from e
 
 
+## preprocessing the data
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     Preprocess the data by keeping only the first 21 columns and the last column (target),

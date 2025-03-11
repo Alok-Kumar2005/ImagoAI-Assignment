@@ -27,6 +27,7 @@ train_data = pd.read_csv("data/processed/train.csv")
 test_data = pd.read_csv("data/processed/test.csv")
 
 
+## using standard scaling to scale the data
 def standard_scaling(df):
     scaler = StandardScaler()
     df = df.iloc[:, :-1]
@@ -42,6 +43,8 @@ def data_preprocessing(train_data, test_data):
     test_data = standard_scaling(test_data)
     return train_data, test_data
 
+
+## saving the data in the data/features directory
 train_preprocessed_data, test_preprocessed_data = data_preprocessing(train_data, test_data)
 
 data_path = os.path.join("data", "features")
