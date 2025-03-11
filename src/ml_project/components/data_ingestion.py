@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import os
 import logging
+import yaml
 from sklearn.model_selection import train_test_split
 
 # Set up logging
@@ -20,6 +21,22 @@ file_handler.setFormatter(formatter)
 
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
+
+
+def load_params(params_path: str) -> dict:
+    """"Load parameters from the given path."""
+    try:
+        with open(params_path, "r") as file:
+            params = yaml.safe_load(file)
+        logging.info(f"Parameters loaded successfully from {params_path}")
+        return params
+    except FileNotFoundError as e:
+        logger.error(f"File not found at {params_path}: {e}")
+        raise FileNotFoundError(f"File not found at {params_path}") from e
+    except Exception as e:
+        logger.error(f"Error in loading parameters: {e}")
+        raise e
+
 
 
 def load_data(data_path: str) -> pd.DataFrame:
@@ -80,7 +97,9 @@ def main():
     try:
         df = load_data("data/TASK-ML-INTERN.csv")
         final_df = preprocess_data(df)
-        train_data, test_data = train_test_split(final_df, test_size=0.2, random_state=42)
+        params = load_params('params.yaml')
+        test_size = params['data_ingestion']['test_size']
+        train_data, test_data = train_test_split(final_df, test_size=test_size, random_state=42)
         save_data(train_data, test_data, "data/raw")
     except Exception as e:
         logger.error(f"Error in main: {e}")

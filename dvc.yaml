@@ -3,6 +3,8 @@ stages:
     cmd: python src/ml_project/components/data_ingestion.py
     deps:
       - src/ml_project/components/data_ingestion.py
+    params:
+      - data_ingestion.test_size
     outs:
       - data/raw
   data_preprocessing:
@@ -26,6 +28,12 @@ stages:
     deps:
       - src/ml_project/components/model_building.py
       - data/features
+    params:
+      - model_building.learning_rate
+      - model_building.max_depth
+      - model_building.max_features
+      - model_building.n_estimators
+      - model_building.subsample
     outs:
       - model.pkl
 

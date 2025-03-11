@@ -5,8 +5,11 @@ stages:
     deps:
     - path: src/ml_project/components/data_ingestion.py
       hash: md5
-      md5: 138e8acec4d199c2633a6f7ddc8f1e6c
-      size: 3087
+      md5: 13059375a1bc409792dec2b689f1fd06
+      size: 3786
+    params:
+      params.yaml:
+        data_ingestion.test_size: 0.2
     outs:
     - path: data/raw
       hash: md5
@@ -59,8 +62,15 @@ stages:
       nfiles: 2
     - path: src/ml_project/components/model_building.py
       hash: md5
-      md5: a9864447eeeb84637b74f9d7acbbf7ac
-      size: 633
+      md5: 4f54745a587abeb94ad09952eb479c35
+      size: 1839
+    params:
+      params.yaml:
+        model_building.learning_rate: 0.01
+        model_building.max_depth: 3
+        model_building.max_features: 0.5
+        model_building.n_estimators: 50
+        model_building.subsample: 0.5
     outs:
     - path: model.pkl
       hash: md5
