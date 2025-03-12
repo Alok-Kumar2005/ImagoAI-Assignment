@@ -19,7 +19,7 @@ dvc
 fastapi
 uvicorn
 streamlit
-torch
-transformers
+# torch
+# transformers
 
--e.
+-e .

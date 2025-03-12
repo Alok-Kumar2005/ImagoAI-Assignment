@@ -88,3 +88,57 @@ Due to the limited dataset size (approximately 500 rows), machine learning algor
 - **DVC:** For pipeline management and data versioning.
 - **FastAPI:** For building the backend API.
 - **Streamlit:** For developing the frontend interface.
+
+# To run the code and check for output run following commands
+```
+uvicorn app:app --reload
+```
+```
+streamlit run streamlit_app.py
+```
+
+
+## Finally dockerize the file (but falied)
+- make a docker file 'dockerfile'
+- write all required code
+- build a image with command 
+```
+docker build -t imago_assign .
+```
+- run the image ( move to container on docker dekstop ) command
+```
+docker run -p 5000:5000 imago_assign
+```
+- add a tag to push on docker hub
+```
+docker tag imago_assign alok8090/imago_assign:latest
+```
+
+- push to the docker hub commands
+```
+docker push alok8090/imago_assign:latest
+```
+
+- to pull and use the image run command 
+```
+docker pull alok8090/imago_assign:latest
+docker run -p 5000:5000 alok8090/imago_assign:latest
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## docker cmds
+```
+docker build -t imago_assignment .
